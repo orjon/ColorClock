@@ -1,0 +1,243 @@
+/* 
+Project Name: Colour Clock
+Client: General Assembly
+Author: Orjon
+*/
+/******************************************
+/* COLOURS
+/*******************************************/
+/******************************************
+/* SENSIBLE DEFAULTS                   
+/*******************************************/
+* {
+  box-sizing: border-box; }
+
+img {
+  max-width: 100%; }
+
+* {
+  /*   //box-sizing: border-box; */
+  font-family: sans-serif;
+  font-weight: 300;
+  font-size: calc($clock-Size/20); }
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0px auto;
+  background: white;
+  overflow: hidden;
+  /*   border:1px solid red; */ }
+
+.clock {
+  position: relative;
+  width: 73vh;
+  height: 73vh;
+  /*   border: 1px solid blue; */ }
+
+#indicatorRotator {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 73vh;
+  height: 73vh;
+  opacity: .5;
+  /*  border: 1px solid green; */ }
+
+#indicators {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 73vh;
+  height: 73vh;
+  /*   border: 1px solid white; */ }
+
+#indicators .top {
+  /*   border: 2px solid white; */
+  /*   border: 2px solid #a3a3a3; */ }
+
+#indicators .bottom {
+  /*   border: 2px solid white; */
+  /*   border: 2px solid #a3a3a3;*/ }
+
+#center {
+  position: absolute;
+  width: calc($clock-Size/2);
+  height: calc($clock-Size/2);
+  border-radius: calc($clock-Size/4);
+  /*  box-shadow: 0px, 0px, 20px, 20px; */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /*  display: none;*/
+  /*  border: 1px solid lightgray; */ }
+
+.twelveSix {
+  position: absolute;
+  width: 73vh;
+  height: 73vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%); }
+
+.oneSeven {
+  position: absolute;
+  width: 73vh;
+  height: 73vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(30deg); }
+
+.twoEight {
+  position: absolute;
+  width: 73vh;
+  height: 73vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(60deg); }
+
+.threeNine {
+  position: absolute;
+  width: 73vh;
+  height: 73vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(90deg); }
+
+.fourTen {
+  position: absolute;
+  width: 73vh;
+  height: 73vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(120deg); }
+
+.fiveEleven {
+  position: absolute;
+  width: 73vh;
+  height: 73vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(150deg); }
+
+.top {
+  position: absolute;
+  /*  width: calc($clock-Size/40);
+    height: $clock-indicatorHeight;
+    border-radius: calc($clock-Size/60);*/
+  width: 4.8666666667vh;
+  height: 14.6vh;
+  border-radius: 2.4333333333vh;
+  /*  border: 1px solid white; */
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0); }
+
+.bottom {
+  position: absolute;
+  /*  width: calc($clock-Size/40);
+    height: $clock-indicatorHeight;
+    border-radius: calc($clock-Size/60);*/
+  width: 4.8666666667vh;
+  height: 14.6vh;
+  border-radius: 2.4333333333vh;
+  /*  border: 1px solid white; */
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, 0); }
+
+#one {
+  background: white; }
+
+#two {
+  background: white; }
+
+#three {
+  background: white; }
+
+#four {
+  background: white; }
+
+#five {
+  background: white; }
+
+#six {
+  background: white; }
+
+#seven {
+  background: white; }
+
+#eight {
+  background: white; }
+
+#nine {
+  background: white; }
+
+#ten {
+  background: white; }
+
+#eleven {
+  background: white; }
+
+#twelve {
+  background: white; }
+
+#displayTime {
+  position: absolute;
+  color: #666;
+  bottom: 2.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*    display: none;*/ }
+
+#displayShift {
+  position: absolute;
+  color: #666;
+  top: 50%;
+  left: 50%;
+  transform: translate(-43%, 50%); }
+
+#displaySize {
+  position: absolute;
+  font-size: calc($clock-Size/50);
+  color: black;
+  bottom: 0.5%;
+  left: 0.5%;
+  display: none;
+  /*    transform: translate(-50%, 0);*/ }
+
+#displayCalculations {
+  position: absolute;
+  font-size: calc($clock-Size/50);
+  color: black;
+  bottom: 0.5%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  display: none; }
+
+/******************************************
+/* HELPER CLASSES
+/*******************************************/
+/* Clearfix */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
+
+.is-hidden {
+  display: none; }
+
+.is-visible {
+  display: block; }
+
+/******************************************
+/* ADDITIONAL STYLES                   
+/*******************************************/
+
+/*# sourceMappingURL=main.css.map */
