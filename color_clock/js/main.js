@@ -91,11 +91,9 @@ $(document).ready(function(){
     sticky: true,
 
     onClick: function(){
-       // $('#indicatorRotator').fadeIn(50);
     },
 
     onPress: function(){
-      $('#indicatorRotator').css('opacity','0.5');
       $('#displayCalculations').fadeIn(250);
     },
 
@@ -122,8 +120,7 @@ $(document).ready(function(){
 
 
     onDragEnd: function(){
-      $('#indicatorRotator').css('opacity','0.000001');
-      // $('#indicatorRotator').fadeOut(500);
+      $('#indictatorRotator').css('opacity','0.1');
       $('#displayCalculations').fadeOut(2000);
     }
   });
