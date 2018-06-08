@@ -25,8 +25,8 @@ $(document).ready(function(){
   window.onload = function (){
     checkWindowSize();
     updateClock();
-    updateIndicatorColors();
-    updateRotatorColors();
+    updateIndicators();
+    updateRotator();
   }
 
   //clock size based on window resize
@@ -95,10 +95,9 @@ $(document).ready(function(){
     },
 
     onPress: function(){
-      $('#indicatorRotator').stop();
-      $('#indicatorRotator').fadeTo(0,0);
-      // $('#indicatorRotator').fadeTo(500,.5);
-      $('#indicatorRotator').fadeTo(250,.25);
+      $('#indicatorRotator').stop();    //stops any on-going previous animation to prevent jumps
+      $('#displayCalculations').stop(); 
+      $('#indicatorRotator').fadeTo(250,.15);
       $('#displayCalculations').fadeIn(250);
     },
 
@@ -120,20 +119,19 @@ $(document).ready(function(){
       updateColourShift();
       updateInfoDisplays();
       updateCenter();
-      updateIndicatorColors();
+      updateIndicators();
     },
 
 
     onDragEnd: function(){
+      $('#indicatorRotator').stop();          //stops any on-going previous animation to prevent jumps
       $('#indicatorRotator').fadeTo(750,0);
-      // $('#indicatorRotator').fadeTo(3000,0);
-      $('#displayCalculations').fadeOut(2000);
-
+      $('#displayCalculations').fadeOut(1500);
     }
   });
 
 
-  function updateIndicatorColors(){
+  function updateIndicators(){
     console.log('Colour Shift' + colorShift);
 
     for (i = 1; i < clockColors.length; i++) {
@@ -148,33 +146,35 @@ $(document).ready(function(){
       colorIndexToRGB(clockColors, i, tempShift);
     } 
 
-    $('#positionOne'   ).css({'background-color': 'rgb('+clockColors[ 1][red]+','+clockColors[ 1][grn]+','+clockColors[ 1][blu]+')',
+
+    $('#indicators .one'   ).css({'background-color': 'rgb('+clockColors[ 1][red]+','+clockColors[ 1][grn]+','+clockColors[ 1][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 1][red]+','+clockColors[ 1][grn]+','+clockColors[ 1][blu]+')'});
-    $('#positionTwo'   ).css({'background-color': 'rgb('+clockColors[ 2][red]+','+clockColors[ 2][grn]+','+clockColors[ 2][blu]+')',
+    $('#indicators .two'   ).css({'background-color': 'rgb('+clockColors[ 2][red]+','+clockColors[ 2][grn]+','+clockColors[ 2][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 2][red]+','+clockColors[ 2][grn]+','+clockColors[ 2][blu]+')'});
-    $('#positionThree' ).css({'background-color': 'rgb('+clockColors[ 3][red]+','+clockColors[ 3][grn]+','+clockColors[ 3][blu]+')',
+    $('#indicators .three' ).css({'background-color': 'rgb('+clockColors[ 3][red]+','+clockColors[ 3][grn]+','+clockColors[ 3][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 3][red]+','+clockColors[ 3][grn]+','+clockColors[ 3][blu]+')'});
-    $('#positionFour'  ).css({'background-color': 'rgb('+clockColors[ 4][red]+','+clockColors[ 4][grn]+','+clockColors[ 4][blu]+')',
+    $('#indicators .four'  ).css({'background-color': 'rgb('+clockColors[ 4][red]+','+clockColors[ 4][grn]+','+clockColors[ 4][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 4][red]+','+clockColors[ 4][grn]+','+clockColors[ 4][blu]+')'});
-    $('#positionFive'  ).css({'background-color': 'rgb('+clockColors[ 5][red]+','+clockColors[ 5][grn]+','+clockColors[ 5][blu]+')',
+    $('#indicators .five'  ).css({'background-color': 'rgb('+clockColors[ 5][red]+','+clockColors[ 5][grn]+','+clockColors[ 5][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 5][red]+','+clockColors[ 5][grn]+','+clockColors[ 5][blu]+')'});
-    $('#positionSix'   ).css({'background-color': 'rgb('+clockColors[ 6][red]+','+clockColors[ 6][grn]+','+clockColors[ 6][blu]+')',
+    $('#indicators .six'   ).css({'background-color': 'rgb('+clockColors[ 6][red]+','+clockColors[ 6][grn]+','+clockColors[ 6][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 6][red]+','+clockColors[ 6][grn]+','+clockColors[ 6][blu]+')'});
-    $('#positionSeven' ).css({'background-color': 'rgb('+clockColors[ 7][red]+','+clockColors[ 7][grn]+','+clockColors[ 7][blu]+')',
+    $('#indicators .seven' ).css({'background-color': 'rgb('+clockColors[ 7][red]+','+clockColors[ 7][grn]+','+clockColors[ 7][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 7][red]+','+clockColors[ 7][grn]+','+clockColors[ 7][blu]+')'});
-    $('#positionEight' ).css({'background-color': 'rgb('+clockColors[ 8][red]+','+clockColors[ 8][grn]+','+clockColors[ 8][blu]+')',
+    $('#indicators .eight' ).css({'background-color': 'rgb('+clockColors[ 8][red]+','+clockColors[ 8][grn]+','+clockColors[ 8][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 8][red]+','+clockColors[ 8][grn]+','+clockColors[ 8][blu]+')'});
-    $('#positionNine'  ).css({'background-color': 'rgb('+clockColors[ 9][red]+','+clockColors[ 9][grn]+','+clockColors[ 9][blu]+')',
+    $('#indicators .nine'  ).css({'background-color': 'rgb('+clockColors[ 9][red]+','+clockColors[ 9][grn]+','+clockColors[ 9][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 9][red]+','+clockColors[ 9][grn]+','+clockColors[ 9][blu]+')'});
-    $('#positionTen'   ).css({'background-color': 'rgb('+clockColors[10][red]+','+clockColors[10][grn]+','+clockColors[10][blu]+')',
+    $('#indicators .ten'   ).css({'background-color': 'rgb('+clockColors[10][red]+','+clockColors[10][grn]+','+clockColors[10][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[10][red]+','+clockColors[10][grn]+','+clockColors[10][blu]+')'});
-    $('#positionEleven').css({'background-color': 'rgb('+clockColors[11][red]+','+clockColors[11][grn]+','+clockColors[11][blu]+')',
+    $('#indicators .eleven').css({'background-color': 'rgb('+clockColors[11][red]+','+clockColors[11][grn]+','+clockColors[11][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[11][red]+','+clockColors[11][grn]+','+clockColors[11][blu]+')'});
-    $('#positionTwelve').css({'background-color': 'rgb('+clockColors[12][red]+','+clockColors[12][grn]+','+clockColors[12][blu]+')',
+    $('#indicators .twelve').css({'background-color': 'rgb('+clockColors[12][red]+','+clockColors[12][grn]+','+clockColors[12][blu]+')',
           'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[12][red]+','+clockColors[12][grn]+','+clockColors[12][blu]+')'});
+
   }
 
-  function updateRotatorColors(){
+  function updateRotator(){
 
     for (i = 1; i < rotatorColors.length; i++) {
       var tempShift = (0+Math.round(i*(1530/12)));
@@ -185,18 +185,18 @@ $(document).ready(function(){
       colorIndexToRGB(rotatorColors, i, tempShift);
     }
 
-    $("#one").css('background-color', 'rgb('   + rotatorColors[1][red] + ','+ rotatorColors[1][grn] +  ',' + rotatorColors[1][blu] +')');
-    $("#two").css('background-color', 'rgb('   + rotatorColors[2][red] + ','+ rotatorColors[2][grn] +  ',' + rotatorColors[2][blu] +')');
-    $("#three").css('background-color', 'rgb(' + rotatorColors[3][red] + ','+ rotatorColors[3][grn] +  ',' + rotatorColors[3][blu] +')');
-    $("#four").css('background-color', 'rgb('  + rotatorColors[4][red] + ','+ rotatorColors[4][grn] +  ',' + rotatorColors[4][blu] +')');
-    $("#five").css('background-color', 'rgb('  + rotatorColors[5][red] + ','+ rotatorColors[5][grn] +  ',' + rotatorColors[5][blu] +')');
-    $("#six").css('background-color', 'rgb('   + rotatorColors[6][red] + ','+ rotatorColors[6][grn] +  ',' + rotatorColors[6][blu] +')');
-    $("#seven").css('background-color', 'rgb(' + rotatorColors[7][red] + ','+ rotatorColors[7][grn] +  ',' + rotatorColors[7][blu] +')');
-    $("#eight").css('background-color', 'rgb(' + rotatorColors[8][red] + ','+ rotatorColors[8][grn] +  ',' + rotatorColors[8][blu] +')');
-    $("#nine").css('background-color', 'rgb('  + rotatorColors[9][red] + ','+ rotatorColors[9][grn] +  ',' + rotatorColors[9][blu] +')');
-    $("#ten").css('background-color', 'rgb('   + rotatorColors[10][red] + ','+ rotatorColors[10][grn] +  ',' + rotatorColors[10][blu] +')');
-    $("#eleven").css('background-color', 'rgb('+ rotatorColors[11][red] + ','+ rotatorColors[11][grn] +  ',' + rotatorColors[11][blu] +')');
-    $("#twelve").css('background-color', 'rgb('+ rotatorColors[12][red] + ','+ rotatorColors[12][grn] +  ',' + rotatorColors[12][blu] +')');
+    $("#indicatorRotator .one").css('background-color', 'rgb('   + rotatorColors[1][red] + ','+ rotatorColors[1][grn] +  ',' + rotatorColors[1][blu] +')');
+    $("#indicatorRotator .two").css('background-color', 'rgb('   + rotatorColors[2][red] + ','+ rotatorColors[2][grn] +  ',' + rotatorColors[2][blu] +')');
+    $("#indicatorRotator .three").css('background-color', 'rgb(' + rotatorColors[3][red] + ','+ rotatorColors[3][grn] +  ',' + rotatorColors[3][blu] +')');
+    $("#indicatorRotator .four").css('background-color', 'rgb('  + rotatorColors[4][red] + ','+ rotatorColors[4][grn] +  ',' + rotatorColors[4][blu] +')');
+    $("#indicatorRotator .five").css('background-color', 'rgb('  + rotatorColors[5][red] + ','+ rotatorColors[5][grn] +  ',' + rotatorColors[5][blu] +')');
+    $("#indicatorRotator .six").css('background-color', 'rgb('   + rotatorColors[6][red] + ','+ rotatorColors[6][grn] +  ',' + rotatorColors[6][blu] +')');
+    $("#indicatorRotator .seven").css('background-color', 'rgb(' + rotatorColors[7][red] + ','+ rotatorColors[7][grn] +  ',' + rotatorColors[7][blu] +')');
+    $("#indicatorRotator .eight").css('background-color', 'rgb(' + rotatorColors[8][red] + ','+ rotatorColors[8][grn] +  ',' + rotatorColors[8][blu] +')');
+    $("#indicatorRotator .nine").css('background-color', 'rgb('  + rotatorColors[9][red] + ','+ rotatorColors[9][grn] +  ',' + rotatorColors[9][blu] +')');
+    $("#indicatorRotator .ten").css('background-color', 'rgb('   + rotatorColors[10][red] + ','+ rotatorColors[10][grn] +  ',' + rotatorColors[10][blu] +')');
+    $("#indicatorRotator .eleven").css('background-color', 'rgb('+ rotatorColors[11][red] + ','+ rotatorColors[11][grn] +  ',' + rotatorColors[11][blu] +')');
+    $("#indicatorRotator .twelve").css('background-color', 'rgb('+ rotatorColors[12][red] + ','+ rotatorColors[12][grn] +  ',' + rotatorColors[12][blu] +')');
     }
 
   function colorIndexToRGB(colorArray, segment, index) {
@@ -280,50 +280,6 @@ $(document).ready(function(){
       colorIndexShifted = 1530 + colorIndexShifted;
     }
   }
-
-  // $("*").toggle(function(){
-  //   $('#displayTime').fadeIn(100);
-  // }, function() {
-  //   $('#displayTime').fadeOut(1000);
-  // });
-
-// $("*").toggle(function(){
-//     $('#displayTime').show();
-//   }, function() {
-//     $('#displayTime').hide();
-//   });
-
-// $( "td" ).toggle(
-//   function() {
-//     $( this ).addClass( "selected" );
-//   }, function() {
-//     $( this ).removeClass( "selected" );
-//   }
-// );
-
-
-
-
-
-
-//---------------------------------------------------
-
-// $("*").mousedown(function(e){
-//     $('#displayTime').fadeOut(0);
-//     $('#displayTime').fadeIn(250);
-// });
-
-// $("*").mouseup(function(e){
-//     $('#displayTime').fadeOut(3000);
-// });
-
-  // $("*").click(function(){
-  //   $('#displayTime').fadeToggle(250);
-  // });
-
-
-
-
 
 
 });

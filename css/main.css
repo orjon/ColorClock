@@ -24,21 +24,8 @@ img {
 /*******************************************/
 :root {
   --Gray: #949494;
-  /*  --one: #ff8000;
-    --two: #ffff00;
-    --three: #80ff00;
-    --four: #00ff00;
-    --five: #00ff80;
-    --six: #00ffff;
-    --seven: #0080ff;
-    --eight: #0000ff;
-    --nine: #8000ff;
-    --ten: #ff00ff;
-    --eleven: #ff0080;
-    --twelve: #ff0000;
-    --centerColor: #ff0000;*/
   --infoColor1: #666;
-  --infoColor2: acid;
+  --infoColor2: #666;
   --clockSize: 73vh; }
 
 * {
@@ -82,14 +69,6 @@ body {
   height: var(--clockSize);
   transform: translate(-50%, -50%);
   /*   border: 1px solid white; */ }
-
-#indicators .top {
-  /*   border: 2px solid white; */
-  /*   border: 2px solid #a3a3a3; */ }
-
-#indicators .bottom {
-  /*   border: 2px solid white; */
-  /*   border: 2px solid #a3a3a3;*/ }
 
 #center {
   position: absolute;
@@ -151,67 +130,33 @@ body {
   top: 50%;
   transform: translate(-50%, -50%) rotate(150deg); }
 
+.borderOff {
+   border: 0px; 
+}
+
+.borderOn {
+  border: 1px solid white; */
+}
+
 .top {
   position: absolute;
-  /*  width: calc(var(--clockSize)/40);
-    height: calc(var(--clockSize)/5);
-    border-radius: calc(var(--clockSize)/60);*/
   width: calc(var(--clockSize)/15);
   height: calc(var(--clockSize)/5);
   border-radius: calc(var(--clockSize)/30);
-  /*  border: 1px solid white; */
   top: 0%;
   left: 50%;
   transform: translate(-50%, 0); }
 
 .bottom {
   position: absolute;
-  /*  width: calc(var(--clockSize)/40);
-    height: calc(var(--clockSize)/5);
-    border-radius: calc(var(--clockSize)/60);*/
   width: calc(var(--clockSize)/15);
   height: calc(var(--clockSize)/5);
   border-radius: calc(var(--clockSize)/30);
-  /*  border: 1px solid white; */
   bottom: 0%;
   left: 50%;
   transform: translate(-50%, 0); }
 
-#one {
-  background: var(--Gray); }
 
-#two {
-  background: var(--Gray); }
-
-#three {
-  background: var(--Gray); }
-
-#four {
-  background: var(--Gray); }
-
-#five {
-  background: var(--Gray); }
-
-#six {
-  background: var(--Gray); }
-
-#seven {
-  background: var(--Gray); }
-
-#eight {
-  background: var(--Gray); }
-
-#nine {
-  background: var(--Gray); }
-
-#ten {
-  background: var(--Gray); }
-
-#eleven {
-  background: var(--Gray); }
-
-#twelve {
-  background: var(--Gray); }
 
 #displayTime {
   position: absolute;
@@ -246,26 +191,3 @@ body {
   transform: translate(-50%, 0);
   display: none; }
 
-/******************************************
-/* HELPER CLASSES
-/*******************************************/
-/* Clearfix */
-.clearfix:before,
-.clearfix:after {
-  content: " ";
-  display: table; }
-
-.clearfix:after {
-  clear: both; }
-
-.is-hidden {
-  display: none; }
-
-.is-visible {
-  display: block; }
-
-/******************************************
-/* ADDITIONAL STYLES                   
-/*******************************************/
-
-/*# sourceMappingURL=main.css.map */
