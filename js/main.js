@@ -95,7 +95,10 @@ $(document).ready(function(){
     },
 
     onPress: function(){
-      $('#indicatorRotator').css('opacity','0.5');
+      $('#indicatorRotator').stop();
+      $('#indicatorRotator').fadeTo(0,0);
+      // $('#indicatorRotator').fadeTo(500,.5);
+      $('#indicatorRotator').fadeTo(250,.25);
       $('#displayCalculations').fadeIn(250);
     },
 
@@ -122,9 +125,10 @@ $(document).ready(function(){
 
 
     onDragEnd: function(){
-      $('#indicatorRotator').css('opacity','0.000001');
-      // $('#indicatorRotator').fadeOut(500);
+      $('#indicatorRotator').fadeTo(750,0);
+      // $('#indicatorRotator').fadeTo(3000,0);
       $('#displayCalculations').fadeOut(2000);
+
     }
   });
 
@@ -173,7 +177,7 @@ $(document).ready(function(){
   function updateRotatorColors(){
 
     for (i = 1; i < rotatorColors.length; i++) {
-      var tempShift = (colorShift+Math.round(i*(1530/12)));
+      var tempShift = (0+Math.round(i*(1530/12)));
       if (tempShift>1529) {
           tempShift = tempShift-1530;
       } 
