@@ -51,7 +51,7 @@ $(document).ready(function(){
  }
 
   //Update clock time every second (1000ms) 
-  setInterval(updateClock, 1000);  
+  // setInterval(updateClock, 1000);  
 
 
   //Get system time and convert to timeIndex & colorIndex
