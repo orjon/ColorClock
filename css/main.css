@@ -53,8 +53,8 @@ body {
 
 #indicatorRotator {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: center;
+  top: center;
   width: var(--clockSize);
   height: var(--clockSize);
   transform: translate(-50%, -50%);
@@ -63,8 +63,8 @@ body {
 
 #indicators {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  left: center;
+  top: center;
   width: var(--clockSize);
   height: var(--clockSize);
   transform: translate(-50%, -50%);
@@ -190,4 +190,25 @@ body {
   left: 50%;
   transform: translate(-50%, 0);
   display: none; }
+
+/******************************************
+/* HELPER CLASSES
+/*******************************************/
+
+/* Clearfix */
+.clearfix:before,
+.clearfix:after {
+     content: " ";
+     display: table;
+}
+.clearfix:after {
+     clear:both;
+}
+
+.is-hidden {
+     display: none;
+}
+.is-visible {
+     display: block;
+}
 

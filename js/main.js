@@ -31,12 +31,13 @@ $(document).ready(function(){
 
   //clock size based on window resize
   window.onresize = function(){ 
+    $('#displaySize').stop();
     $('#displaySize').show();
     checkWindowSize();
     $('#displaySize').fadeOut(2000);
   };
 
-  //Set clockSize based on screen width or height, whichever is smaller.
+  //Set clockSize t0 73% of window width or height, whichever is smaller.
   function checkWindowSize(){
   var windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
   var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
