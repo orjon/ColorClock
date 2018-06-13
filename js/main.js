@@ -324,24 +324,29 @@ $(document).ready(function(){
   //   $('#lock').toggle();
   // });
 
-  $('#visibilityAlt').click(function(){
-    $('#visibilityAlt').toggle();
-    $('#visibility').toggle();
-  });
-
   $('#visibility').click(function(){
     $('#visibilityAlt').toggle();
-    $('#visibility').toggle();
+    $('#displayTime').toggle();
+    // $('#visibilityAlt').fadeIn(250);
   });
 
   $('#lock').click(function(){
     $('#lockAlt').toggle();
-    $('#lock').toggle();
+    // $('#lock').toggle();
+    // $('#lockAlt').fadeIn(250);
   });
+
+
+  $('#visibilityAlt').click(function(){
+        $('#visibilityAlt').toggle();
+        $('#displayTime').toggle();
+    // $('#visibilityAlt').fadeOut(250);
+  });
+
 
     $('#lockAlt').click(function(){
     $('#lockAlt').toggle();
-    $('#lock').toggle();
+    // $('#lockAlt').toggle();
   });
 
 

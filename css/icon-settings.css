@@ -69,7 +69,8 @@
   width: 51px;
   border-radius: 30px;
   opacity:1;
-  transition:.2s; 
+  transition:.72s; 
+  display: block;
 }
 
 #visibilityAlt {
@@ -80,7 +81,7 @@
   width: 51px;
   border-radius: 30px;
   opacity:1;
-  transition:.2s; 
+  transition:.72s; 
   display: none;
 }
 
@@ -92,8 +93,10 @@
   height: 51px;
   width: 51px;
   border-radius: 30px;
+  border: 2px solid white;
   opacity:1;
-  transition:.2s; 
+  transition:.72s; 
+  display: block;
 }
 
 #lockAlt {
@@ -103,18 +106,26 @@
   height: 51px;
   width: 51px;
   border-radius: 30px;
+  border: 2px solid white;
   opacity: 1;
-  display: none;
-  transition:.2s; 
+  transition:.72s; 
+  display: block;
 }
 
-#visibility:hover {
- opacity:1;
+#visibility:hover #visibiltyAlt{
+ display: block;
+ transform: rotate(360deg);
 }
 
-#lock:hover {
+/*#lock:hover #lockAlt{
+ display: block;
  opacity:1;
+ transform: rotate(360deg);
 }
+
+#lock:hover #lock{
+ display: none;
+}*/
 
 #close:hover {
  opacity:1;
