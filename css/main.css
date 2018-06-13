@@ -36,14 +36,9 @@ img {
 
 :root {
   --Gray: #949494;
-  --colorTitle: white;
   --infoColor1: #666;
   --infoColor2: black;
-  --clockSize: 73vh;
-  --speedAnimCenter: 2.5s;
-  --speedAnimGrow: 7.5s;
-  --speedAnimSpin: 7.5s;
-
+   --clockSize: 73vh;
 }
 
 
@@ -146,17 +141,12 @@ ul {
 }
 
 
-#title {
-  color: var(--colorTitle);
-/*  animation: titleGrow var(--speedAnimTitle) linear;*/
-}
 
 .clock {
    position: relative;
    width: (var(--clockSize));
    height: (var(--clockSize));
 /*   border: 1px solid blue; */
-
 }
 
 
@@ -167,7 +157,7 @@ ul {
   top: 50%;
   width: (var(--clockSize));
   height: (var(--clockSize));
-  opacity: 0.0;
+  opacity: .15;
 /*  border: 1px solid green; */
 }
 
@@ -177,8 +167,6 @@ ul {
   top: 50%;
   width: (var(--clockSize));
   height: (var(--clockSize));
- /* display:none;*/
-  animation: indicatorSpin var(--speedAnimSpin) ease-out forwards;
 /*   border: 1px solid white; */
 }
 
@@ -198,18 +186,12 @@ ul {
   width: calc(var(--clockSize)/2);
   height: calc(var(--clockSize)/2);
   border-radius: calc(var(--clockSize)/4);
+/*  box-shadow: 0px, 0px, 20px, 20px; */
   left: 50%;
   top: 50%;
-  opacity: 0;
   transform: translate(-50%, -50%);
-/*  animation: centerAppear var(--speedAnimFade) ease-in forwards;
-  animation-delay: 2.6s*/
-
-  animation: centerAppear var(--speedAnimCenter) ease-out forwards;
-  animation-delay: 4.5s
-
 /*  display: none;*/
-/*  border: 1px solid lightgray; */
+/*  border: 1px solid lightgray; */*/
 }
 
 .twelveSix {
@@ -219,7 +201,6 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .oneSeven {
@@ -229,7 +210,6 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(30deg);
-  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .twoEight {
@@ -239,7 +219,6 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(60deg);
-  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .threeNine {
@@ -249,7 +228,6 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(90deg);
-  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .fourTen {
@@ -259,7 +237,6 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(120deg);
-  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .fiveEleven {
@@ -269,38 +246,79 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(150deg);
-  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .top{
   position: absolute;
+
+/*  width: calc(var(--clockSize)/40);
+  height: calc(var(--clockSize)/5);
+  border-radius: calc(var(--clockSize)/60);*/
+
   width: calc(var(--clockSize)/15);
-/*  width: calc(var(--clockSize)/17.5);*/
   height: calc(var(--clockSize)/5);
   border-radius: calc(var(--clockSize)/30);
+
+/*  border: 1px solid white; */
   top: 0%;
   left: 50%;
   transform: translate(-50%, 0);
-  animation: indicatorGrow var(--speedAnimGrow) ease-out;
-/*  border: 1px solid white; */
 }
 
 .bottom {
   position: absolute;
-/*  width: calc(var(--clockSize)/17.5);*/
   width: calc(var(--clockSize)/15);
   height: calc(var(--clockSize)/5);
   border-radius: calc(var(--clockSize)/30);
+/*  border: 1px solid white; */
   bottom: 0%;
   left: 50%;
   transform: translate(-50%, 0);
-  animation: indicatorGrow var(--speedAnimGrow) ease-out;
-/*  border: 1px solid white; */
 } 
+
+#one {
+  background: var(--Gray);
+}
+#two {
+  background: var(--Gray);
+}
+#three {
+  background: var(--Gray);
+}
+#four {
+  background: var(--Gray);
+}
+#five {
+  background: var(--Gray);
+}
+#six{
+  background: var(--Gray);
+}
+#seven{
+  background: var(--Gray);
+}
+#eight{
+  background: var(--Gray);
+}
+#nine{
+  background: var(--Gray);
+}
+#ten{
+  background: var(--Gray);
+}
+#eleven{
+  background: var(--Gray);
+}
+#twelve {
+  background: var(--Gray);
+}	
+
+
 
 #displayTime {
     position: absolute;
     color: var(--infoColor1);
+/*    bottom: calc(1vh-(var(--clockSize))*2);*/
     bottom: 1%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -336,7 +354,7 @@ ul {
     bottom: 0.5%;
     left: 50%;
     transform: translate(-50%, 0);
-    display: none;
+      display: none;
 }
 
 
@@ -366,76 +384,6 @@ ul {
 /* ADDITIONAL STYLES                   
 /*******************************************/
 
-@keyframes centerAppear {
-  from{
-    opacity: 0;
-    width: 0;
-    height: 0;
-    border-radius: calc(var(--clockSize)/4);
-  }
-  to{
-    width: calc(var(--clockSize)/2);
-    height: calc(var(--clockSize)/2);
-    border-radius: calc(var(--clockSize)/4);
-    opacity: 1;
-  }
-}
-
-
-/*
-@keyframes centerAppear {
-  from{
-    opacity: 0;
-    width: 2000px;
-    height: 2000px;
-    border-radius: 1000px;
-  }
-  to{
-    width: calc(var(--clockSize)/2);
-    height: calc(var(--clockSize)/2);
-    border-radius: calc(var(--clockSize)/4);
-    opacity: 1;
-  }
-}*/
-
-
-@keyframes indicatorSpin {
-  from{
-    transform: rotate(0);
-  }
-  to{
-    transform: rotate(3600deg);
-  }
-}
-
-
-
-
-@keyframes indicatorExpand {
-  from{
-    opacity: 0;
-    height: calc(var(--clockSize)/2.75);
-  }
-  to{
-    opacity: 1;
-    height: var(--clockSize);
-  }
-}
-
-
-/*
-@keyframes indicatorGrow {
-  from{
-    transform: translate(-50%, 0) rotate(-180deg);
-    width: 0px;
-    height: 0px;
-  }
-  to{
-    transform: translate(-50%, 0) rotate(0deg);
-    width: calc(var(--clockSize)/15);
-    height: calc(var(--clockSize)/5);
-  }
-}*/
 
 
 
