@@ -1,22 +1,28 @@
 
-.icon {
+.icon1 {
   position: absolute;
   height: 51px;
   width: 51px;
   right: 20px;
   top: 20px;
-  transition:.75s; 
+  transition:.75s;
+  animation: settingsIconBrightness 2s ease backwards;
+  animation-delay: 7.5s;
 }
 
 #cog {
   position: absolute; 
   opacity: 0.1;
   transition:.75s;
+/*  animation: settingsIconBrightness 2s ease backwards;
+  animation-delay: 8s;*/
 }
 
 #hands {
   opacity: 0.0;
-  transition:.75s; 
+  transition:.75s;
+/*  animation: settingsIconBrightness 2s ease forwards;
+  animation-delay: 8s; */
 }
 
 #hour {
@@ -29,19 +35,19 @@
   transition:.75s; 
 }
 
-.icon:hover #hands{
+.icon1:hover #hands{
   opacity: 0.75;
 }
 
-.icon:hover #cog{
+.icon1:hover #cog{
   opacity: 0.75;
   transform: rotate(180deg);
 }
 
-.icon:hover #hour{
+.icon1:hover #hour{
   transform: rotate(30deg);
 }
-.icon:hover #minute{
+.icon1:hover #minute{
   transform: rotate(360deg);
 }
 
@@ -56,8 +62,8 @@
   top: 10px;
   height: 10px;
   width:  10px;
-  opacity:1;
-  transition:.2s; 
+  opacity:.5;
+  transition:.25s; 
 }
 
 
@@ -68,8 +74,9 @@
   height: 51px;
   width: 51px;
   border-radius: 30px;
-  opacity:1;
-  transition:.72s; 
+  border: 2px solid white;
+  opacity:.5;
+  transition:.25s; 
   display: block;
 }
 
@@ -80,8 +87,9 @@
   height: 51px;
   width: 51px;
   border-radius: 30px;
-  opacity:1;
-  transition:.72s; 
+  border: 2px solid white;
+  opacity:.5;
+  transition:.25s; 
   display: none;
 }
 
@@ -94,8 +102,8 @@
   width: 51px;
   border-radius: 30px;
   border: 2px solid white;
-  opacity:1;
-  transition:.72s; 
+  opacity:.5;
+  transition:.25s; 
   display: block;
 }
 
@@ -107,25 +115,50 @@
   width: 51px;
   border-radius: 30px;
   border: 2px solid white;
-  opacity: 1;
-  transition:.72s; 
+  opacity: .5;
+  transition:.25s; 
+  display: none;
+}
+
+
+
+/*#visibility:hover {
+  display: none;
+}
+
+#visibility:hover ~ #visibilityAlt{
   display: block;
+  opacity:1;
 }
 
-#visibility:hover #visibiltyAlt{
- display: block;
- transform: rotate(360deg);
+#visibilityAlt:hover {
+  display: block;
+  opacity:1;
 }
 
-/*#lock:hover #lockAlt{
- display: block;
- opacity:1;
- transform: rotate(360deg);
-}
-
-#lock:hover #lock{
+#visibilityAlt:hover ~ #visibility{
  display: none;
-}*/
+}
+*/
+
+
+
+#visibility:hover {
+  opacity:1;
+}
+
+#visibilityAlt:hover {
+  opacity:1;
+}
+
+
+#lock:hover {
+ opacity:1;
+}
+
+#lockAlt:hover {
+ opacity:1;
+}
 
 #close:hover {
  opacity:1;

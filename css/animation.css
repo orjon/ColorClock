@@ -24,8 +24,41 @@
   }
 }
 
+.icon1 {
+  position: absolute;
+  height: 51px;
+  width: 51px;
+  right: 20px;
+  top: 20px;
+  transition:.75s; 
+}
+
+#cog {
+  position: absolute; 
+  opacity: 0.0;
+  transition:.75s;
+}
 
 
+
+
+
+@keyframes settingsIconSize{
+  from{
+    height:0px;
+    width: 0px;
+  }
+  to{
+    height:51px;
+    width: 51px;
+  }
+}
+
+
+@keyframes settingsIconBrightness{
+    0%   {opacity: 0.0}
+    100% {opacity: 0.1}
+}
 
 @keyframes indicatorExpand {
   from{

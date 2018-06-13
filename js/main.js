@@ -93,7 +93,7 @@ $(document).ready(function(){
   }
 
 
-  Draggable.create("#indicatorRotator", {
+  var draggableIndicators = Draggable.create("#indicatorRotator", {
     type: "rotation",
     sticky: true,
 
@@ -288,7 +288,7 @@ $(document).ready(function(){
     }
   }
 
-  $('.icon').click(function(){
+  $('.icon1').click(function(){
     $('.icon-options').fadeIn(750);
     $('#cog').fadeOut(750);
     $('#hands').fadeOut(750);
@@ -304,57 +304,34 @@ $(document).ready(function(){
     $('#minutes').fadeIn(750);
   });
 
-  // $('#visibility').hover(function(){
-  //   $('#visibilityAlt').toggle();
-  //   $('#visibility').toggle();
-  // });
-
-  //  $('#visibilityAlt').hover(function(){
-  //   $('#visibilityAlt').toggle();
-  //   $('#visibility').toggle();
-  // });
-
-  // $('#lock').hover(function(){
-  //   $('#lockAlt').toggle();
-  //   $('#lock').toggle();
-  // });
-
-  //   $('#lockAlt').hover(function(){
-  //   $('#lockAlt').toggle();
-  //   $('#lock').toggle();
-  // });
-
-  $('#visibility').click(function(){
+  $('#icon2').click(function(){
     $('#visibilityAlt').toggle();
+    $('#visibility').toggle();
     $('#displayTime').toggle();
     // $('#visibilityAlt').fadeIn(250);
   });
 
   $('#lock').click(function(){
     $('#lockAlt').toggle();
-    // $('#lock').toggle();
-    // $('#lockAlt').fadeIn(250);
+    $('#lock').toggle();
+    // $('#indicatorRotator').draggable('enable');
+    draggableIndicators[0].disable();
   });
 
 
-  $('#visibilityAlt').click(function(){
-        $('#visibilityAlt').toggle();
-        $('#displayTime').toggle();
-    // $('#visibilityAlt').fadeOut(250);
-  });
-
+  // $('#visibilityAlt').click(function(){
+  //       $('#visibilityAlt').toggle();
+  //       $('#visibility').toggle();
+  //       $('#displayTime').toggle();
+  //   // $('#visibilityAlt').fadeOut(250);
+  // });
 
     $('#lockAlt').click(function(){
     $('#lockAlt').toggle();
-    // $('#lockAlt').toggle();
+    $('#lock').toggle();
+    // $('#indicatorRotator').draggable('disable');
+    draggableIndicators[0].enable();
   });
-
-
-
-    //   $('#visibility').mouseover(function(){
-    // this.src= "images/color&clock(83x83).png";
-    // $(this).css('opacity','0.75');
-
 
 });
 
