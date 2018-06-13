@@ -4,30 +4,14 @@ Client: Your Client
 Author: Your Name
 */
 
+@import url('animation.css');
+@import url('icon-settings.css');
+
 /******************************************
 /* COLOURS
 /*******************************************/
 
-/* add a list of colours used in the project */
 
-/******************************************
-/* SENSIBLE DEFAULTS                   
-/*******************************************/
-
-* {
-     box-sizing: border-box;
-}
-img {
-	max-width:100%;
-}
-
-
-
-/******************************************
-/* TYPOGRAPHY
-/*******************************************/
-
-/* add type styles here */
 
 
 /******************************************
@@ -36,28 +20,28 @@ img {
 
 :root {
   --Gray: #949494;
+  --colorTitle: white;
   --infoColor1: #666;
   --infoColor2: black;
-   --clockSize: 73vh;
+  --clockSize: 73vh;
+  --speedAnimCenter: 2.5s;
+  --speedAnimGrow: 7.5s;
+  --speedAnimSpin: 7.5s;
 }
-
-
-
-
 
 
 
 * {
-/*   //box-sizing: border-box; */
   font-family: sans-serif;
   font-weight: 300;
   font-size: calc(var(--clockSize)/20);
+  box-sizing: border-box;
 }
-/*
+
 
 img {
-display:block;
-}*/
+  max-width:100%;
+}
 
 body {
   display: flex;
@@ -68,7 +52,6 @@ body {
   margin: 0px auto;
   background: var(--Gray);
   overflow: hidden;
-/*   border:1px solid red; */
 }
 
 
@@ -93,54 +76,10 @@ ul {
 }
 
 
-
-.icon {
-  position: absolute;
-  height: 51px;
-  width: 51px;
-  right: 10px;
-  top: 10px;
-  transition:.75s; 
+#title {
+  color: var(--colorTitle);
+/*  animation: titleGrow var(--speedAnimTitle) linear;*/
 }
-
-#cog {
-  position: absolute; 
-  opacity: 0.1;
-  transition:.75s;
-}
-
-#hands {
-  opacity: 0.0;
-  transition:.75s; 
-}
-
-#hour {
-  position: absolute;
-  transition:.75s; 
-}
-
-#minute {
-  position: absolute;
-  transition:.75s; 
-}
-
-.icon:hover #hands{
-  opacity: 0.5;
-}
-
-.icon:hover #cog{
-  opacity: 0.5;
-  transform: rotate(180deg);
-}
-
-.icon:hover #hour{
-  transform: rotate(30deg);
-}
-.icon:hover #minute{
-  transform: rotate(360deg);
-}
-
-
 
 .clock {
    position: relative;
@@ -150,14 +89,13 @@ ul {
 }
 
 
-
 #indicatorRotator {  
   position: absolute;
   left: 50%;
   top: 50%;
   width: (var(--clockSize));
   height: (var(--clockSize));
-  opacity: .15;
+  opacity: 0.0;
 /*  border: 1px solid green; */
 }
 
@@ -167,17 +105,9 @@ ul {
   top: 50%;
   width: (var(--clockSize));
   height: (var(--clockSize));
+ /* display:none;*/
+  animation: indicatorSpin var(--speedAnimSpin) ease-out forwards;
 /*   border: 1px solid white; */
-}
-
-#indicators .top {
-/*   border: 2px solid white; */
-/*   border: 2px solid #a3a3a3; */
-}
-
-#indicators .bottom {
-/*   border: 2px solid white; */
-/*   border: 2px solid #a3a3a3;*/ 
 }
 
 
@@ -186,12 +116,12 @@ ul {
   width: calc(var(--clockSize)/2);
   height: calc(var(--clockSize)/2);
   border-radius: calc(var(--clockSize)/4);
-/*  box-shadow: 0px, 0px, 20px, 20px; */
   left: 50%;
   top: 50%;
+  opacity: 0;
   transform: translate(-50%, -50%);
-/*  display: none;*/
-/*  border: 1px solid lightgray; */*/
+  animation: centerAppear var(--speedAnimCenter) ease-out forwards;
+  animation-delay: 4.5s
 }
 
 .twelveSix {
@@ -201,6 +131,7 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .oneSeven {
@@ -210,6 +141,7 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(30deg);
+  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .twoEight {
@@ -219,6 +151,7 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(60deg);
+  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .threeNine {
@@ -228,6 +161,7 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(90deg);
+  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .fourTen {
@@ -237,6 +171,7 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(120deg);
+  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .fiveEleven {
@@ -246,23 +181,19 @@ ul {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%) rotate(150deg);
+  animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
 .top{
   position: absolute;
-
-/*  width: calc(var(--clockSize)/40);
-  height: calc(var(--clockSize)/5);
-  border-radius: calc(var(--clockSize)/60);*/
-
   width: calc(var(--clockSize)/15);
   height: calc(var(--clockSize)/5);
   border-radius: calc(var(--clockSize)/30);
-
-/*  border: 1px solid white; */
   top: 0%;
   left: 50%;
   transform: translate(-50%, 0);
+  animation: indicatorGrow var(--speedAnimGrow) ease-out;
+/*  border: 1px solid white; */
 }
 
 .bottom {
@@ -270,55 +201,16 @@ ul {
   width: calc(var(--clockSize)/15);
   height: calc(var(--clockSize)/5);
   border-radius: calc(var(--clockSize)/30);
-/*  border: 1px solid white; */
   bottom: 0%;
   left: 50%;
   transform: translate(-50%, 0);
+  animation: indicatorGrow var(--speedAnimGrow) ease-out;
+/*  border: 1px solid white; */
 } 
-
-#one {
-  background: var(--Gray);
-}
-#two {
-  background: var(--Gray);
-}
-#three {
-  background: var(--Gray);
-}
-#four {
-  background: var(--Gray);
-}
-#five {
-  background: var(--Gray);
-}
-#six{
-  background: var(--Gray);
-}
-#seven{
-  background: var(--Gray);
-}
-#eight{
-  background: var(--Gray);
-}
-#nine{
-  background: var(--Gray);
-}
-#ten{
-  background: var(--Gray);
-}
-#eleven{
-  background: var(--Gray);
-}
-#twelve {
-  background: var(--Gray);
-}	
-
-
 
 #displayTime {
     position: absolute;
     color: var(--infoColor1);
-/*    bottom: calc(1vh-(var(--clockSize))*2);*/
     bottom: 1%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -354,36 +246,8 @@ ul {
     bottom: 0.5%;
     left: 50%;
     transform: translate(-50%, 0);
-      display: none;
+    display: none;
 }
-
-
-/******************************************
-/* HELPER CLASSES
-/*******************************************/
-
-/* Clearfix */
-.clearfix:before,
-.clearfix:after {
-     content: " ";
-     display: table;
-}
-.clearfix:after {
-     clear:both;
-}
-
-.is-hidden {
-     display: none;
-}
-.is-visible {
-     display: block;
-}
-
-
-/******************************************
-/* ADDITIONAL STYLES                   
-/*******************************************/
-
 
 
 

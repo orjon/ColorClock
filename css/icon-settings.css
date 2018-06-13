@@ -1,0 +1,46 @@
+
+.icon {
+  position: absolute;
+  height: 51px;
+  width: 51px;
+  right: 10px;
+  top: 10px;
+  transition:.75s; 
+}
+
+#cog {
+  position: absolute; 
+  opacity: 0.1;
+  transition:.75s;
+}
+
+#hands {
+  opacity: 0.0;
+  transition:.75s; 
+}
+
+#hour {
+  position: absolute;
+  transition:.75s; 
+}
+
+#minute {
+  position: absolute;
+  transition:.75s; 
+}
+
+.icon:hover #hands{
+  opacity: 0.5;
+}
+
+.icon:hover #cog{
+  opacity: 0.5;
+  transform: rotate(180deg);
+}
+
+.icon:hover #hour{
+  transform: rotate(30deg);
+}
+.icon:hover #minute{
+  transform: rotate(360deg);
+}
