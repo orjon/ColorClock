@@ -14,22 +14,6 @@
 }
 
 
-/*
-@keyframes centerAppear {
-  from{
-    opacity: 0;
-    width: 2000px;
-    height: 2000px;
-    border-radius: 1000px;
-  }
-  to{
-    width: calc(var(--clockSize)/2);
-    height: calc(var(--clockSize)/2);
-    border-radius: calc(var(--clockSize)/4);
-    opacity: 1;
-  }
-}*/
-
 
 @keyframes indicatorSpin {
   from{
@@ -54,17 +38,3 @@
   }
 }
 
-
-/*
-@keyframes indicatorGrow {
-  from{
-    transform: translate(-50%, 0) rotate(-180deg);
-    width: 0px;
-    height: 0px;
-  }
-  to{
-    transform: translate(-50%, 0) rotate(0deg);
-    width: calc(var(--clockSize)/15);
-    height: calc(var(--clockSize)/5);
-  }
-}*/

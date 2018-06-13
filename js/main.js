@@ -50,8 +50,14 @@ $(document).ready(function(){
   }
  }
 
+  function delayedFn() {
+    setInterval(updateClock, 1000);
+  }
+
   //Update clock time every second (1000ms) 
-  setInterval(updateClock, 1000);  
+  setTimeout(delayedFn(), 10000);  
+
+
 
 
   //Get system time and convert to timeIndex & colorIndex
@@ -281,6 +287,68 @@ $(document).ready(function(){
       colorIndexShifted = 1530 + colorIndexShifted;
     }
   }
+
+  $('.icon').click(function(){
+    $('.icon-options').fadeIn(750);
+    $('#cog').fadeOut(750);
+    $('#hands').fadeOut(750);
+    $('#hours').fadeOut(750);
+    $('#minutes').fadeOut(750);
+  });
+
+  $('#close').click(function(){
+    $('.icon-options').fadeOut(750);
+    $('#cog').fadeIn(750);
+    $('#hands').fadeIn(750);
+    $('#hours').fadeIn(750);
+    $('#minutes').fadeIn(750);
+  });
+
+  // $('#visibility').hover(function(){
+  //   $('#visibilityAlt').toggle();
+  //   $('#visibility').toggle();
+  // });
+
+  //  $('#visibilityAlt').hover(function(){
+  //   $('#visibilityAlt').toggle();
+  //   $('#visibility').toggle();
+  // });
+
+  // $('#lock').hover(function(){
+  //   $('#lockAlt').toggle();
+  //   $('#lock').toggle();
+  // });
+
+  //   $('#lockAlt').hover(function(){
+  //   $('#lockAlt').toggle();
+  //   $('#lock').toggle();
+  // });
+
+  $('#visibilityAlt').click(function(){
+    $('#visibilityAlt').toggle();
+    $('#visibility').toggle();
+  });
+
+  $('#visibility').click(function(){
+    $('#visibilityAlt').toggle();
+    $('#visibility').toggle();
+  });
+
+  $('#lock').click(function(){
+    $('#lockAlt').toggle();
+    $('#lock').toggle();
+  });
+
+    $('#lockAlt').click(function(){
+    $('#lockAlt').toggle();
+    $('#lock').toggle();
+  });
+
+
+
+    //   $('#visibility').mouseover(function(){
+    // this.src= "images/color&clock(83x83).png";
+    // $(this).css('opacity','0.75');
 
 
 });

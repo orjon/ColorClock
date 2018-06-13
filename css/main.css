@@ -40,7 +40,7 @@ Author: Your Name
 
 
 img {
-  max-width:100%;
+  max-width: 100%;
 }
 
 body {
@@ -51,28 +51,7 @@ body {
 	min-height: 100vh;
   margin: 0px auto;
   background: var(--Gray);
-  overflow: hidden;
-}
-
-
-nav {
-  position: absolute;
-  right: 15px;
-  top: 15px; 
-}
-
-
-nav li{
-  display:none;
-}
-
-ul {
-  position: absolute;
-  height: 51px;
-  width: 51px;
-  right: 0%;
-  top: 0%;
-  transition:.75s; 
+  overflow: hidden; 
 }
 
 
