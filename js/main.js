@@ -5,7 +5,7 @@ $(document).ready(function(){
 
   var rotationAngle=0;
 
-  var timeIndex = 0;
+  var timeIndex =  0;
   var timeString = 0;
   var colorIndex = 0;
   var colorIndexShifted = 0;
@@ -17,16 +17,18 @@ $(document).ready(function(){
   const red = 0;
   const grn = 1;
   const blu = 2;
+
+  const indicatorOrder = [12,6,1,7,2,8,3,9,4,10,5,11]; //Order of indicators in DOM
   var clockColors =      [[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
-  var rotatorColors = [["empty"],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
+  var rotatorColors =    [["empty"],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]];
 
 
   //On load get time and set colors.
   window.onload = function (){
     checkWindowSize();
     updateClock();
-    updateIndicators();
-    updateRotator();
+    updateIndicators(clockColors, colorShift);
+    updateIndicators(rotatorColors,0);
   }
 
   //clock size based on window resize
@@ -50,14 +52,8 @@ $(document).ready(function(){
   }
  }
 
-  function delayedFn() {
-    setInterval(updateClock, 1000);
-  }
 
-  //Update clock time every second (1000ms) 
-  setTimeout(delayedFn(), 10000);  
-
-
+setInterval(updateClock, 1000);
 
 
   //Get system time and convert to timeIndex & colorIndex
@@ -109,7 +105,7 @@ $(document).ready(function(){
     },
 
     onDrag: function(){
-      console.log('this.rotation: '+ this.rotation);
+      console.log('Rotation Angle: '+ this.rotation);
 
       var currentRotation = this.rotation
 
@@ -126,7 +122,7 @@ $(document).ready(function(){
       updateColourShift();
       updateInfoDisplays();
       updateCenter();
-      updateIndicators();
+      updateIndicators(clockColors,colorShift);
     },
 
 
@@ -138,73 +134,36 @@ $(document).ready(function(){
   });
 
 
-  function updateIndicators(){
-    console.log('Colour Shift' + colorShift);
 
-    for (i = 1; i < clockColors.length; i++) {
-      var tempShift = (-colorShift+Math.round(i*(1530/12)));
+
+  function updateIndicators(indicatorArray, shiftAmount){
+    console.log('Color Shift: ' + shiftAmount);
+
+    for (i = 1; i < indicatorArray.length; i++) {
+      var tempShift = ((-shiftAmount)+Math.round(i*(1530/12)));
       if (tempShift>1529) {
           tempShift = tempShift-1530;
       } 
       if (tempShift<0) {
           tempShift = 1530+tempShift;
       } 
-      console.log(i + ': ' + tempShift);
-      colorIndexToRGB(clockColors, i, tempShift);
+      colorIndexToRGB(indicatorArray, i, tempShift);
+      //console.log( '%cIndicator '+ i+ ": " + indicatorArray[i], 'background: rgb('+ indicatorArray[i]+')'); 
     } 
+    
+    var cssTag = '#indicators'; 
 
+    if (indicatorArray[0] == "empty"){ //ensures correct part of HTML is selected
+      cssTag = "#indicatorRotator";
+    }
 
-    $('#indicators .one'   ).css({'background-color': 'rgb('+clockColors[ 1][red]+','+clockColors[ 1][grn]+','+clockColors[ 1][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 1][red]+','+clockColors[ 1][grn]+','+clockColors[ 1][blu]+')'});
-    $('#indicators .two'   ).css({'background-color': 'rgb('+clockColors[ 2][red]+','+clockColors[ 2][grn]+','+clockColors[ 2][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 2][red]+','+clockColors[ 2][grn]+','+clockColors[ 2][blu]+')'});
-    $('#indicators .three' ).css({'background-color': 'rgb('+clockColors[ 3][red]+','+clockColors[ 3][grn]+','+clockColors[ 3][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 3][red]+','+clockColors[ 3][grn]+','+clockColors[ 3][blu]+')'});
-    $('#indicators .four'  ).css({'background-color': 'rgb('+clockColors[ 4][red]+','+clockColors[ 4][grn]+','+clockColors[ 4][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 4][red]+','+clockColors[ 4][grn]+','+clockColors[ 4][blu]+')'});
-    $('#indicators .five'  ).css({'background-color': 'rgb('+clockColors[ 5][red]+','+clockColors[ 5][grn]+','+clockColors[ 5][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 5][red]+','+clockColors[ 5][grn]+','+clockColors[ 5][blu]+')'});
-    $('#indicators .six'   ).css({'background-color': 'rgb('+clockColors[ 6][red]+','+clockColors[ 6][grn]+','+clockColors[ 6][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 6][red]+','+clockColors[ 6][grn]+','+clockColors[ 6][blu]+')'});
-    $('#indicators .seven' ).css({'background-color': 'rgb('+clockColors[ 7][red]+','+clockColors[ 7][grn]+','+clockColors[ 7][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 7][red]+','+clockColors[ 7][grn]+','+clockColors[ 7][blu]+')'});
-    $('#indicators .eight' ).css({'background-color': 'rgb('+clockColors[ 8][red]+','+clockColors[ 8][grn]+','+clockColors[ 8][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 8][red]+','+clockColors[ 8][grn]+','+clockColors[ 8][blu]+')'});
-    $('#indicators .nine'  ).css({'background-color': 'rgb('+clockColors[ 9][red]+','+clockColors[ 9][grn]+','+clockColors[ 9][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[ 9][red]+','+clockColors[ 9][grn]+','+clockColors[ 9][blu]+')'});
-    $('#indicators .ten'   ).css({'background-color': 'rgb('+clockColors[10][red]+','+clockColors[10][grn]+','+clockColors[10][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[10][red]+','+clockColors[10][grn]+','+clockColors[10][blu]+')'});
-    $('#indicators .eleven').css({'background-color': 'rgb('+clockColors[11][red]+','+clockColors[11][grn]+','+clockColors[11][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[11][red]+','+clockColors[11][grn]+','+clockColors[11][blu]+')'});
-    $('#indicators .twelve').css({'background-color': 'rgb('+clockColors[12][red]+','+clockColors[12][grn]+','+clockColors[12][blu]+')',
-          'box-shadow': '0 0 '+blur+'px '+blur+'px rgb('+clockColors[12][red]+','+clockColors[12][grn]+','+clockColors[12][blu]+')'});
+    $(cssTag + ' .indicator').each(function( index ) {
+      $(this).css('background-color', 'rgb('+indicatorArray[(indicatorOrder[index])][red]+','+indicatorArray[(indicatorOrder[index])][grn]+','+indicatorArray[(indicatorOrder[index])][blu]+')');
+      //console.log( '%cIndicator '+ index+ ": " + $( this ).css('background-color'), 'background:'+ $( this ).css('background-color')); //Displays in DOM order!
+    }); 
 
   }
 
-  function updateRotator(){
-
-    for (i = 1; i < rotatorColors.length; i++) {
-      var tempShift = (0+Math.round(i*(1530/12)));
-      if (tempShift>1529) {
-          tempShift = tempShift-1530;
-      } 
-      // console.log(i + ': ' + tempIndexShift);
-      colorIndexToRGB(rotatorColors, i, tempShift);
-    }
-
-    $("#indicatorRotator .one").css('background-color', 'rgb('   + rotatorColors[1][red] + ','+ rotatorColors[1][grn] +  ',' + rotatorColors[1][blu] +')');
-    $("#indicatorRotator .two").css('background-color', 'rgb('   + rotatorColors[2][red] + ','+ rotatorColors[2][grn] +  ',' + rotatorColors[2][blu] +')');
-    $("#indicatorRotator .three").css('background-color', 'rgb(' + rotatorColors[3][red] + ','+ rotatorColors[3][grn] +  ',' + rotatorColors[3][blu] +')');
-    $("#indicatorRotator .four").css('background-color', 'rgb('  + rotatorColors[4][red] + ','+ rotatorColors[4][grn] +  ',' + rotatorColors[4][blu] +')');
-    $("#indicatorRotator .five").css('background-color', 'rgb('  + rotatorColors[5][red] + ','+ rotatorColors[5][grn] +  ',' + rotatorColors[5][blu] +')');
-    $("#indicatorRotator .six").css('background-color', 'rgb('   + rotatorColors[6][red] + ','+ rotatorColors[6][grn] +  ',' + rotatorColors[6][blu] +')');
-    $("#indicatorRotator .seven").css('background-color', 'rgb(' + rotatorColors[7][red] + ','+ rotatorColors[7][grn] +  ',' + rotatorColors[7][blu] +')');
-    $("#indicatorRotator .eight").css('background-color', 'rgb(' + rotatorColors[8][red] + ','+ rotatorColors[8][grn] +  ',' + rotatorColors[8][blu] +')');
-    $("#indicatorRotator .nine").css('background-color', 'rgb('  + rotatorColors[9][red] + ','+ rotatorColors[9][grn] +  ',' + rotatorColors[9][blu] +')');
-    $("#indicatorRotator .ten").css('background-color', 'rgb('   + rotatorColors[10][red] + ','+ rotatorColors[10][grn] +  ',' + rotatorColors[10][blu] +')');
-    $("#indicatorRotator .eleven").css('background-color', 'rgb('+ rotatorColors[11][red] + ','+ rotatorColors[11][grn] +  ',' + rotatorColors[11][blu] +')');
-    $("#indicatorRotator .twelve").css('background-color', 'rgb('+ rotatorColors[12][red] + ','+ rotatorColors[12][grn] +  ',' + rotatorColors[12][blu] +')');
-    }
 
   function colorIndexToRGB(colorArray, segment, index) {
     const maxValue = 255;
@@ -253,7 +212,7 @@ $(document).ready(function(){
     }
 
 
-  function consoleArrayDump(){
+  function consoleArrayDump(){    // for error checking via console
     console.log('-Array Dump---------');
     for (i = 1; i < clockColors.length; i++) {
       console.log(i + ': ' + clockColors[i]); 
@@ -278,6 +237,7 @@ $(document).ready(function(){
     updateColourShift();
     updateInfoDisplays();
     updateCenter();
+    console.log( '%cCurrent time: '+timeString, 'background: rgb('+ clockColors[0]+')'); 
   }
 
   //Update colorIndex with colorShift value
@@ -289,6 +249,7 @@ $(document).ready(function(){
   }
 
   $('.icon1').click(function(){
+    console.log('Clicked: Settings');
     $('.icon-options').fadeIn(750);
     $('#cog').fadeOut(750);
     $('#hands').fadeOut(750);
@@ -297,6 +258,7 @@ $(document).ready(function(){
   });
 
   $('#close').click(function(){
+    console.log('Clicked: Close menu');
     $('.icon-options').fadeOut(750);
     $('#cog').fadeIn(750);
     $('#hands').fadeIn(750);
@@ -305,33 +267,44 @@ $(document).ready(function(){
   });
 
   $('#icon2').click(function(){
+    console.log('Clicked: Show/Hide time');
     $('#visibilityAlt').toggle();
     $('#visibility').toggle();
     $('#displayTime').toggle();
     // $('#visibilityAlt').fadeIn(250);
   });
 
+
+
   $('#lock').click(function(){
+    console.log('Clicked: %cLock','color:white; background:Red'); //css in console!
     $('#lockAlt').toggle();
     $('#lock').toggle();
-    // $('#indicatorRotator').draggable('enable');
     draggableIndicators[0].disable();
   });
 
-
-  // $('#visibilityAlt').click(function(){
-  //       $('#visibilityAlt').toggle();
-  //       $('#visibility').toggle();
-  //       $('#displayTime').toggle();
-  //   // $('#visibilityAlt').fadeOut(250);
-  // });
-
-    $('#lockAlt').click(function(){
+  $('#lockAlt').click(function(){
+    console.log('Clicked: %cUnlock','color:white; background:Green'); //css in console!
     $('#lockAlt').toggle();
     $('#lock').toggle();
-    // $('#indicatorRotator').draggable('disable');
     draggableIndicators[0].enable();
   });
+
+  // trying to get draggable to toggle properly.
+  // $('#icon3').click(function(){
+  //   console.log('Clicked: Lock/Unlock')
+  //   $('#lockAlt').toggle();
+  //   $('#lock').toggle();
+  //   $(draggableIndicators[0]).toggle(
+  //         draggableIndicators[0].disable(),
+  //         draggableIndicators[0].enable()
+  //     ) 
+
+  //   // $(this).toggle(
+  //   //   draggableIndicators[0].disable(),
+  //   //   draggableIndicators[0].enable()
+  //   //   ) 
+  // });
 
 });
 

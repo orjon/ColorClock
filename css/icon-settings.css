@@ -121,28 +121,6 @@
 }
 
 
-
-/*#visibility:hover {
-  display: none;
-}
-
-#visibility:hover ~ #visibilityAlt{
-  display: block;
-  opacity:1;
-}
-
-#visibilityAlt:hover {
-  display: block;
-  opacity:1;
-}
-
-#visibilityAlt:hover ~ #visibility{
- display: none;
-}
-*/
-
-
-
 #visibility:hover {
   opacity:1;
 }
