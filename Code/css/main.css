@@ -6,13 +6,12 @@ Author: Your Name
 
 @import url('animation.css');
 @import url('icon-settings.css');
-@import url('variables');
+@import url('variables.css');
 
 
 /******************************************
 /* LAYOUT                   
 /*******************************************/
-
 
 * {
   font-family: sans-serif;
