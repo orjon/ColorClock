@@ -124,9 +124,13 @@ setInterval(updateClock, 1000);
       updateCenter();
       updateIndicators(clockColors,colorShift);
     },
+    // onDragEnd: function(){
+    //   $('#indicatorRotator').stop();          //stops any on-going previous animation to prevent jumps
+    //   $('#indicatorRotator').fadeTo(750,0);
+    //   $('#displayCalculations').fadeOut(1500);
+    // }
 
-
-    onDragEnd: function(){
+    onRelease: function(){
       $('#indicatorRotator').stop();          //stops any on-going previous animation to prevent jumps
       $('#indicatorRotator').fadeTo(750,0);
       $('#displayCalculations').fadeOut(1500);
@@ -163,6 +167,9 @@ setInterval(updateClock, 1000);
     }); 
 
   }
+
+
+
 
 
   function colorIndexToRGB(colorArray, segment, index) {

@@ -6,29 +6,12 @@ Author: Your Name
 
 @import url('animation.css');
 @import url('icon-settings.css');
-
-/******************************************
-/* COLOURS
-/*******************************************/
-
-
+@import url('variables');
 
 
 /******************************************
 /* LAYOUT                   
 /*******************************************/
-
-:root {
-  --Gray: #949494;
-  --colorTitle: white;
-  --infoColor1: #666;
-  --infoColor2: black;
-  --clockSize: 73vh;
-  --speedAnimCenter: 2.5s;
-  --speedAnimGrow: 7.5s;
-  --speedAnimSpin: 7.5s;
-}
-
 
 
 * {
@@ -84,7 +67,6 @@ body {
   top: 50%;
   width: (var(--clockSize));
   height: (var(--clockSize));
- /* display:none;*/
   animation: indicatorSpin var(--speedAnimSpin) ease-out forwards;
 /*   border: 1px solid white; */
 }
