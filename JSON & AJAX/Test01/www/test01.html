@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>LED Color Web Page</title>
+      <script type="text/javascript">
+      var old = 'Current is 99.99 mA'; //inital test value for old
+      
+	  function selectColor()
+	   {
+		var pickedColor = color.options[color.selectedIndex];
+		var url = "/arduino/" + pickedColor.value
+		var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("POST", url, true); //false is synchronous mode, asynchronous is preferred
+        xmlhttp.setRequestHeader("Content-Type","text/plain;charset=UTF-8");
+        xmlhttp.send(null);
+	   }
+	   
+	  function GetSensor()
+	   {
+	   var xmlhttp = new XMLHttpRequest();
+       var url = "/data/get/";  //this is the only form that works
+       xmlhttp.open("GET", url, true); //false is synchronous mode, asynchronous is preferred       
+       xmlhttp.onreadystatechange = function() 
+        {
+       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) 
+         {
+        var myResponse = xmlhttp.responseText  //needto do string operations on result
+        var startPnt = myResponse.indexOf('Current is');
+        var endPnt = myResponse.indexOf('mA') +2;
+        if (startPnt > 0)
+          { //parse out needed data
+          var needData = myResponse.substring(startPnt, endPnt);
+          if (needData !== old)
+           { // have new data for update
+            document.getElementById("measured_I").innerHTML = needData;
+            old = needData;
+           }
+	      }
+         }
+        }
+       xmlhttp.send(null);
+       }
+
+    setInterval(GetSensor, 380);  //poll for new data every 380 mSec
+ 
+    </script>
+  </head>
+  
+  <body>
+    <h1 Align=Center>Arduino Test Web Server<br>using Java Script</h1>
+    <h2 Align=Center>This Manlipulates LED devices attached to a Yun</h2>
+    <p Align=Center>Press the button to select a color</p>
+    <hr>
+    <p>Menu Selection type button</p>
+    <p Align=Center>
+		<select id="color" name="Select Color" size="1" onclick="selectColor()">
+		<option value="black">Black</option>
+		<option value="red">Red</option>
+		<option value="green">Green</option>
+		<option value="blue">Blue</option>
+		<option value="yellow">Yellow</option>
+		<option value="cyan">Cyan</option>
+		<option value="magenta">Magenta</option>
+		<option value="white">White</option>
+		</select>
+	</p><HR>
+	<p>Now to get information from a sensor</p>
+	<p id="measured_I" Align=Center>Awaiting Arduino Current Update</p>
+  </body>
+</html>
