@@ -82,16 +82,16 @@ $(document).ready(function(){
     timeString = hours + ":" + minutes + ":" + seconds;
   }
 
-
-  function updateArduino() {   //update Adruino using AJAX
-    var url = "/arduino/" + theTime + "," + colorShift;
-    var xmlhttp = new XMLHttpRequest();
-        xmlhttp.open("POST", url, true); //false is synchronous mode, asynchronous is preferred
-        xmlhttp.setRequestHeader("Content-Type","text/plain;charset=UTF-8");
-        xmlhttp.send(null);
-    console.log("Uploaded: " + theTime + "," + colorShift);
-  }
-
+//-------------FUNCTION ONLY USED ON ARDUINO VERSION OF CLOCK--------------------------------------
+  // function updateArduino() {   //update Adruino using AJAX
+  //   var url = "/arduino/" + theTime + "," + colorShift;
+  //   var xmlhttp = new XMLHttpRequest();
+  //       xmlhttp.open("POST", url, true); //false is synchronous mode, asynchronous is preferred
+  //       xmlhttp.setRequestHeader("Content-Type","text/plain;charset=UTF-8");
+  //       xmlhttp.send(null);
+  //   console.log("Uploaded: " + theTime + "," + colorShift);
+  // }
+//-------------FUNCTION ONLY USED ON ARDUINO VERSION OF CLOCK--------------------------------------
 
 
   //Map number (num) in range 'in' to range 'out'
@@ -132,7 +132,9 @@ $(document).ready(function(){
     },
 
     onRelease: function(){
-      updateArduino();
+      //----FUNCTION ONLY CALLED ON ARDUINO VERSION OF CLOCK-------
+      // updateArduino();
+     //----FUNCTION ONLY CALLED ON ARDUINO VERSION OF CLOCK-------
       $('#indicatorRotator').stop();          //stops any on-going previous animation to prevent jumps
       $('#indicatorRotator').fadeTo(750,0);
       $('#displayCalculations').fadeOut(1500);
