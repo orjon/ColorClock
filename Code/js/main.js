@@ -45,19 +45,18 @@ $(document).ready(function(){
 
   //Set clockSize t0 73% of window width or height, whichever is smaller.
   function checkWindowSize(){
-  var windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  $('#displaySize').text(windowWidth + 'W x ' +  windowHeight + 'H');
-   
-  if (windowWidth < windowHeight){
-    document.documentElement.style.setProperty('--clockSize', '73vw');
-  } else {
-     document.documentElement.style.setProperty('--clockSize', '73vh');
+    var windowWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+    var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+    $('#displaySize').text(windowWidth + 'W x ' +  windowHeight + 'H');
+     
+    if (windowWidth < windowHeight){
+      document.documentElement.style.setProperty('--clockSize', '73vw');
+    } else {
+       document.documentElement.style.setProperty('--clockSize', '73vh');
+    }
   }
- }
 
-
-setInterval(updateClock, 1000);
+  setTimeout(function(){setInterval(updateClock, 1000)}, 8000); //Check time every 1s after initail 8s delay for animation smoothness.
 
 
   //Get system time and convert to timeIndex & colorIndex
@@ -83,6 +82,7 @@ setInterval(updateClock, 1000);
     timeString = hours + ":" + minutes + ":" + seconds;
   }
 
+
   function updateArduino() {   //update Adruino using AJAX
     var url = "/arduino/" + theTime + "," + colorShift;
     var xmlhttp = new XMLHttpRequest();
@@ -90,10 +90,7 @@ setInterval(updateClock, 1000);
         xmlhttp.setRequestHeader("Content-Type","text/plain;charset=UTF-8");
         xmlhttp.send(null);
     console.log("Uploaded: " + theTime + "," + colorShift);
-    }
-
-
-
+  }
 
 
 
@@ -101,7 +98,6 @@ setInterval(updateClock, 1000);
   function map (num, in_min, in_max, out_min, out_max) {
     return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
   }
-
 
   var draggableIndicators = Draggable.create("#indicatorRotator", {
     type: "rotation",
@@ -144,8 +140,6 @@ setInterval(updateClock, 1000);
   });
 
 
-
-
   function updateIndicators(indicatorArray, shiftAmount){
     console.log("Color Shift: " + shiftAmount);
 
@@ -174,9 +168,6 @@ setInterval(updateClock, 1000);
   }
 
 
-
-
-
   function colorIndexToRGB(colorArray, segment, index) {
     const maxValue = 255;
 
@@ -185,43 +176,43 @@ setInterval(updateClock, 1000);
       colorArray[segment][grn] = index; 
       colorArray[segment][blu] = 0;
       return;
-      }
+    }
     
     if ((index > 255) && (index <= 510)) { 
       colorArray[segment][red] = maxValue-(index-(255)); 
       colorArray[segment][grn] = maxValue; 
       colorArray[segment][blu] =0;
       return;
-      }
-      
+    }
+
     if ((index > 510) && (index <= 765)) {
       colorArray[segment][red] =0; 
       colorArray[segment][grn] =maxValue; 
       colorArray[segment][blu] =(index-(510));
       return;
-      }
+    }
       
     if ((index > 765) && (index <= 1020)) {
       colorArray[segment][red] =0; 
       colorArray[segment][grn] =maxValue-(index-(765)); 
       colorArray[segment][blu] =maxValue;
       return;
-      }
+    }
       
     if ((index > 1020) && (index <= 1275)) {
       colorArray[segment][red] =(index-(1020)); 
       colorArray[segment][grn] =0; 
       colorArray[segment][blu] =maxValue;
       return;
-      }
+    }
       
     if ((index > 1275) && (index <= 1530)) { 
       colorArray[segment][red] = maxValue;
       colorArray[segment][grn] =0;
       colorArray[segment][blu] = maxValue-(index-(1275));
       return;
-      }
     }
+  }
 
   function updateInfoDisplays(){
     $('#displayTime').text(timeString);
