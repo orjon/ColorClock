@@ -164,7 +164,6 @@ body {
 .bottom {
   will-change: transform; 
   will-change: opacity;
-
   position: absolute;
   width: calc(var(--clockSize)/15);
   height: calc(var(--clockSize)/5);
