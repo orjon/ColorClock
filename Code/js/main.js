@@ -219,7 +219,7 @@ $(document).ready(function(){
   function updateInfoDisplays(){
     $('#displayTime').text(timeString);
     $('#displayShift').text(rotationAngle.toFixed(1) + '°'); 
-    $('#displayCalculations').text('Time Index:' + timeIndex + ' • Shift:' + rotationAngle.toFixed(1) + '° = ' + colorShift + ' • Color Index:' + colorIndexShifted + '  | R' + clockColors[center][red] +' G' + clockColors[center][grn] +' B' + clockColors[center][blu]);
+    $('#displayCalculations').text('Time Index:' + timeIndex + ' • Shift:' + rotationAngle.toFixed(1) + '° = ' + colorShift + ' • Color Index:' + colorIndexShifted + '  • R' + clockColors[center][red] +' G' + clockColors[center][grn] +' B' + clockColors[center][blu]);
   }
 
   function updateCenter(){

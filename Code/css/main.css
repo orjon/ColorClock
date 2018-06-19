@@ -157,7 +157,6 @@ body {
   top: 0%;
   left: 50%;
   transform: translate(-50%, 0);
-  animation: indicatorGrow var(--speedAnimGrow) ease-out;
 /*  border: 1px solid white; */
 }
 
@@ -171,9 +170,23 @@ body {
   bottom: 0%;
   left: 50%;
   transform: translate(-50%, 0);
-  animation: indicatorGrow var(--speedAnimGrow) ease-out;
 /*  border: 1px solid white; */
 } 
+
+.icon1 {
+  position: absolute;
+  height: 51px;
+  width: 51px;
+  right: 20px;
+  top: 20px;
+  transition:.75s; 
+}
+
+#cog {
+  position: absolute; 
+  opacity: 0.0;
+  transition:.75s;
+}
 
 #displayTime {
     position: absolute;

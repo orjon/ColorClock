@@ -13,8 +13,6 @@
   }
 }
 
-
-
 @keyframes indicatorSpin {
   from{
     transform: rotate(0);
@@ -23,25 +21,6 @@
     transform: rotate(3600deg);
   }
 }
-
-.icon1 {
-  position: absolute;
-  height: 51px;
-  width: 51px;
-  right: 20px;
-  top: 20px;
-  transition:.75s; 
-}
-
-#cog {
-  position: absolute; 
-  opacity: 0.0;
-  transition:.75s;
-}
-
-
-
-
 
 @keyframes settingsIconSize{
   from{
@@ -53,7 +32,6 @@
     width: 51px;
   }
 }
-
 
 @keyframes settingsIconBrightness{
     0%   {opacity: 0.0}
