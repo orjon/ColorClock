@@ -10,6 +10,7 @@ $(document).ready(function(){
   var colorIndex = 0;
   var colorIndexShifted = 0;
   var colorShift = 0;
+  var clockSize;
 
   var blur = 0;
 
@@ -33,6 +34,8 @@ $(document).ready(function(){
     updateClock();
     updateIndicators(clockColors, colorShift);
     updateIndicators(rotatorColors,0);
+    //     createFields();
+    // distributeFields();
   }
 
   //clock size based on window resize
@@ -49,14 +52,72 @@ $(document).ready(function(){
     var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     $('#displaySize').text(windowWidth + 'W x ' +  windowHeight + 'H');
      
-    if (windowWidth < windowHeight){
+   if (windowWidth < windowHeight){
       document.documentElement.style.setProperty('--clockSize', '73vw');
+      // clockSize = (0.73 * windowWidth);
+      //  console.log('w:'+ clockSize);
     } else {
        document.documentElement.style.setProperty('--clockSize', '73vh');
+      //  clockSize = (0.73 * windowHeight);
+      // console.log('h: ' +clockSize);
     }
   }
 
-  setTimeout(function(){setInterval(updateClock, 1000)}, 8000); //Check time every 1s after initail 8s delay for animation smoothness.
+  setTimeout(function(){
+    setInterval(updateClock, 1000);
+  }, 8000); //Check time every 1s after initail 8s delay for animation smoothness.
+
+
+
+
+// function createFields() {
+//     $('.dot').remove();
+//     var container = $('#clock');
+//     for(var i = 0; i < + 120; i++) {
+//         $('<div/>', {
+//             'class': 'dot', 
+//         }).appendTo(container);
+//     }
+// }
+
+// function distributeFields() {
+//     var fields = $('.dot'),
+//         width = clockSize,
+//         height = clockSize,
+//         angle = 0,
+//         step = (2*Math.PI) / fields.length;
+//     var radius = document.documentElement.clientWidth/2;
+//         console.log(radius);
+//         console.log(clockSize);
+//     fields.each(function() {
+//         var x = Math.round(width/2 + radius * Math.cos(angle) - $(this).width()/2);
+//         var y = Math.round(height/2 + radius * Math.sin(angle) - $(this).height()/2);
+//         if(window.console) {
+//             console.log($(this).text(), x, y);
+//         }
+//         $(this).css({
+//             left: (clockSize/2) + x + 'px',
+//             top: (clockSize/2)+ y + 'px'
+//         });
+//         angle += step;
+//     });
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   //Get system time and convert to timeIndex & colorIndex
@@ -139,6 +200,18 @@ $(document).ready(function(){
       $('#indicatorRotator').fadeTo(750,0);
       $('#displayCalculations').fadeOut(1500);
     }
+  
+  });
+
+
+  $('.indicator').hover(function(){
+    $('.top').css('box-shadow', '0 0 5px 5px white');
+    $('.bottom').css('box-shadow', '0 0 5px 5px white');
+    console.log('Got your glow on');
+  }, function(){
+    $('.top').css('box-shadow', '0 0 0px 0px white');
+    $('.bottom').css('box-shadow', '0 0 0px 0px white');
+    console.log('Glow gone off');
   });
 
 
@@ -235,6 +308,9 @@ $(document).ready(function(){
     updateCenter();
     console.log( '%cCurrent time: '+timeString, 'background: rgb('+ clockColors[0]+')'); 
   }
+
+
+
 
 
   //Update colorIndex with colorShift value

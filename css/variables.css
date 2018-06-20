@@ -8,9 +8,10 @@
   --infoColor2: black;  /* Info bar color */
 
 /*******************************************
-/* Animation Speeds
+/* Sizes
 /*******************************************/
   --clockSize: 73vh;
+  --dotSize: calc(var(--clockSize)/100);
 
 /*******************************************
 /* Animation Speeds

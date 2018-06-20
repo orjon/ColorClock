@@ -45,11 +45,12 @@ body {
 /*  animation: titleGrow var(--speedAnimTitle) linear;*/
 }
 
-.clock {
-   position: relative;
+#clock {
+   position: absolute;
    width: (var(--clockSize));
    height: (var(--clockSize));
-/*   border: 1px solid blue; */
+   border-radius: calc(var(--clockSize)/2);
+   border: 1px solid blue; 
 }
 
 
@@ -84,8 +85,9 @@ body {
   opacity: 0;
   transform: translate(-50%, -50%);
   animation: centerAppear var(--speedAnimCenter) ease-out forwards;
-  animation-delay: 4.5s
+  animation-delay: 4.5s;
 }
+
 
 .twelveSix {
   position: absolute;
@@ -96,6 +98,16 @@ body {
   transform: translate(-50%, -50%);
   animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
+
+/*.boom {
+  position: absolute;
+  width: var(--clockSize);
+  height: var(--clockSize);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  animation: indicatorExpand var(--speedAnimGrow) ease-out;
+}*/
 
 .oneSeven {
   position: absolute;
@@ -147,6 +159,7 @@ body {
   animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
+
 .top{
   will-change: transform;
   will-change: opacity; 
@@ -172,6 +185,28 @@ body {
   transform: translate(-50%, 0);
 /*  border: 1px solid white; */
 } 
+
+/*.top:hover, .bottom:hover {
+  box-shadow: 0 0 10px 10px white;
+}*/
+
+
+
+.dot{
+  will-change: transform;
+  will-change: opacity; 
+  position: absolute;
+  width: var(--dotSize);
+  height: var(--dotSize);
+  border-radius: calc(var(--clockSize)/30);
+  top: 0%;
+  left: 0%;
+  transform: translate(-50%, -25%);
+  border: 1px solid var(--infoColor1); 
+}
+
+
+
 
 #displayTime {
     position: absolute;
