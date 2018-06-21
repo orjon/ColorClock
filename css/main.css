@@ -50,7 +50,7 @@ body {
    width: (var(--clockSize));
    height: (var(--clockSize));
    border-radius: calc(var(--clockSize)/2);
-   border: 1px solid blue; 
+/*   border: 1px solid blue; */
 }
 
 
@@ -99,15 +99,6 @@ body {
   animation: indicatorExpand var(--speedAnimGrow) ease-out;
 }
 
-/*.boom {
-  position: absolute;
-  width: var(--clockSize);
-  height: var(--clockSize);
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  animation: indicatorExpand var(--speedAnimGrow) ease-out;
-}*/
 
 .oneSeven {
   position: absolute;
@@ -186,24 +177,7 @@ body {
 /*  border: 1px solid white; */
 } 
 
-/*.top:hover, .bottom:hover {
-  box-shadow: 0 0 10px 10px white;
-}*/
 
-
-
-.dot{
-  will-change: transform;
-  will-change: opacity; 
-  position: absolute;
-  width: var(--dotSize);
-  height: var(--dotSize);
-  border-radius: calc(var(--clockSize)/30);
-  top: 0%;
-  left: 0%;
-  transform: translate(-50%, -25%);
-  border: 1px solid var(--infoColor1); 
-}
 
 
 

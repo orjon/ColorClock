@@ -172,6 +172,8 @@ $(document).ready(function(){
     },
 
     onDrag: function(){
+      $('.top').css({'transition': 'box-shadow 100ms','box-shadow': '0 0 0px 0px #a8a8a8'});
+      $('.bottom').css({'transition': 'box-shadow 100ms','box-shadow': '0 0 0px 0px #a8a8a8'});
       console.log("Rotation Angle: "+ this.rotation);
 
       var currentRotation = this.rotation
@@ -204,14 +206,12 @@ $(document).ready(function(){
   });
 
 
-  $('.indicator').hover(function(){
-    $('.top').css('box-shadow', '0 0 5px 5px white');
-    $('.bottom').css('box-shadow', '0 0 5px 5px white');
-    console.log('Got your glow on');
+  $('#indicatorRotator, .indicator').hover(function(){
+    $('.top').css({'transition': 'box-shadow 150ms','box-shadow': '0 0 25px 5px #a8a8a8'});
+    $('.bottom').css({'transition': 'box-shadow 150ms','box-shadow': '0 0 25px 5px #a8a8a8'});
   }, function(){
-    $('.top').css('box-shadow', '0 0 0px 0px white');
-    $('.bottom').css('box-shadow', '0 0 0px 0px white');
-    console.log('Glow gone off');
+    $('.top').css({'transition': 'box-shadow 100ms','box-shadow': '0 0 0px 0px #a8a8a8'});
+    $('.bottom').css({'transition': 'box-shadow 100ms','box-shadow': '0 0 0px 0px #a8a8a8'});
   });
 
 
