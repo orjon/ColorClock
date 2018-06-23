@@ -213,6 +213,16 @@ body {
 }
 
 
+#displayContact {
+    position: absolute;
+    font-size: calc(var(--clockSize)/35);
+    color: var(--infoColor1);
+    bottom: 0.5%;
+    right: 0.5%;
+/*    transform: translate(-50%, 0);*/
+}
+
+
 #displayCalculations {
     position: absolute;
     font-size: calc(var(--clockSize)/50);
